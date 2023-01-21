@@ -1,0 +1,35 @@
+<div class="col-12 p-2 d-flex justify-content-center">
+  <mat-card class="mt-4 shadow-lg">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>Binary/Decimal Converter</mat-card-title>
+        <mat-card-subtitle>Hi there! Try type some binarys digits or decimal value.</mat-card-subtitle>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      <form>
+        <mat-form-field class="col-12 mb-2">
+          <mat-label>Binary</mat-label>
+          <input type="text" matInput [formControl]="binaryField" [errorStateMatcher]="matcher" placeholder="Ex. 0101" name="binary"
+                 id="binary"
+                 (keyup)="convertBinaryToDecimal()">
+          <mat-error *ngIf="binaryField.hasError('pattern')">
+            Please enter a valid binary value that contains only '0' or '1'
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="mb-2 col-12">
+          <mat-label>Decimal</mat-label>
+          <input [formControl]="decimalField"
+                 type="text"
+                 name="decimal"
+                 id="decimal"
+                 matInput
+                 (keyup)="convertDecimalToBinary()" [errorStateMatcher]="matcher" placeholder="Ex. 255" name="binary">
+          <mat-error *ngIf="decimalField.hasError('pattern')">
+            Please enter a valid decimal value that contains only numbers
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
